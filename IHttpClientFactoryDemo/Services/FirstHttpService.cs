@@ -18,7 +18,9 @@ namespace IHttpClientFactoryDemo
             var hash = _httpClient.GetHashCode();
 
             var client = _httpClient.CreateClient();
-            var html = await client.GetStringAsync("http://www.baidu.com");
+            client.BaseAddress = new Uri("http://www.baidu.com");
+
+            var html = await client.GetStringAsync("/");
             return $"FirstHttpService IHttpClientFactory hash:{hash} {Environment.NewLine } {Environment.NewLine } {html}";
         }
     }

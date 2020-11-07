@@ -21,7 +21,9 @@ namespace IHttpClientFactoryDemo
         {
             var hash = _httpClient.GetHashCode();
             var client = _httpClient.CreateClient();
-            var html = await client.GetStringAsync("http://www.baidu.com");
+            client.BaseAddress = new Uri("https://www.jd.com/");
+
+            var html = await client.GetStringAsync("/");
             return $"SecondHttpService IHttpClientFactory hash:{hash} {Environment.NewLine } {Environment.NewLine } {html}";
         }
     }
