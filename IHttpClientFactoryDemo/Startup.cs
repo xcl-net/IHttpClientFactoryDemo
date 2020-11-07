@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using IHttpClientFactoryDemo;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WebApplication4.Services;
 
 namespace WebApplication4
 {
@@ -20,8 +20,12 @@ namespace WebApplication4
         public void ConfigureServices(IServiceCollection services)
         {
             //httpfactory register
-            services.AddHttpClient<IMyHttpService, MyHttpService>();
-            services.AddSingleton<IMyHttpService, MyHttpService>();
+            services.AddHttpClient<IFirstHttpService, FirstHttpService>();
+            services.AddSingleton<IFirstHttpService, FirstHttpService>();
+
+            services.AddHttpClient<ISecondHttpService, SecondHttpService>();
+            services.AddSingleton<ISecondHttpService, SecondHttpService>();
+
 
             // Business logic laye
             services.AddSingleton<MyBusinessService>();

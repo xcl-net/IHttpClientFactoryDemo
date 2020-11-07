@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace WebApplication4.Services
+namespace IHttpClientFactoryDemo
 {
-    public interface IMyHttpService
+    public interface IFirstHttpService
     {
         Task<string> Get();
     }

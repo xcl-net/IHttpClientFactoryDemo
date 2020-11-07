@@ -3,21 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication4.Services
+namespace IHttpClientFactoryDemo
 {
     public class MyBusinessService
     {
 
-        IMyHttpService _myHttpService;
-        public MyBusinessService(IMyHttpService myHttpService)
+        IFirstHttpService _myHttpService;
+        ISecondHttpService _secondHttpService;
+
+
+        public MyBusinessService(IFirstHttpService myHttpService, ISecondHttpService secondHttpService)
         {
             _myHttpService = myHttpService;
+            _secondHttpService = secondHttpService;
         }
 
-        public async Task<string> Get()
+        public async Task<string> GetFirst()
         {
-           return await _myHttpService.Get();
+            return await _myHttpService.Get();
         }
 
+
+        public async Task<string> GetSecond()
+        {
+            return await _secondHttpService.Get();
+        }
     }
 }
